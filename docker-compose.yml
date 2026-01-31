@@ -1,6 +1,7 @@
 services:
   openclaw-gateway:
     image: ${OPENCLAW_IMAGE:-openclaw:local}
+    container_name: openclaw-gateway
     environment:
       HOME: /home/node
       TERM: xterm-256color
@@ -26,9 +27,16 @@ services:
         "--port",
         "${OPENCLAW_GATEWAY_PORT:-18789}",
       ]
+    networks:
+      - morgana
+    logging:
+      driver: loki
+      options:
+        loki-url: http://localhost:3100/loki/api/v1/push
 
   openclaw-cli:
     image: ${OPENCLAW_IMAGE:-openclaw:local}
+    container_name: openclaw-cli
     environment:
       HOME: /home/node
       TERM: xterm-256color
@@ -43,3 +51,13 @@ services:
     tty: true
     init: true
     entrypoint: ["node", "dist/index.js"]
+    networks:
+      - morgana
+    logging:
+      driver: loki
+      options:
+        loki-url: http://localhost:3100/loki/api/v1/push
+
+networks:
+  morgana:
+    external: true

@@ -65,10 +65,6 @@ The script returns JSON with this structure:
   "topCrimes": [
     {"id": 497, "name": "Furto - Loss", "severity": 5, "count": 1858},
     {"id": 319, "name": "Roubo - Outros", "severity": 8, "count": 1468}
-  ],
-  "recommendations": [
-    "Keep mobile phones and valuables concealed",
-    "Stay alert on public transportation"
   ]
 }
 ```
@@ -95,10 +91,6 @@ Most Common Crimes:
 1. {name} - {count} occurrences
 2. {name} - {count} occurrences
 ...
-
-Recommendations:
-- {recommendation}
-- {recommendation}
 ```
 
 ## Error Handling

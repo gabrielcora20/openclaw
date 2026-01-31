@@ -2,11 +2,11 @@
 """
 Criminal Activity Analysis Script
 
-Analyzes criminal activity for locations in São Paulo state, Brazil.
+Analyzes criminal activity for locations in Sao Paulo state, Brazil.
 Calls the Thomas API and returns structured results with crime type names.
 
 Usage:
-    python analyze.py "Praça da República São Paulo"
+    python analyze.py "Praca da Republica Sao Paulo"
     python analyze.py --help
 
 Environment:
@@ -21,7 +21,6 @@ import sys
 from typing import Optional
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
-from urllib.parse import urlencode
 
 
 # Configuration
@@ -107,7 +106,7 @@ def get_crime_type(crime_type_id: int) -> dict:
         result = fetch_json(url)
         CRIME_TYPE_CACHE[crime_type_id] = result
         return result
-    except Exception as e:
+    except Exception:
         # Return a fallback if crime type lookup fails
         return {
             "id": crime_type_id,
@@ -125,7 +124,6 @@ def analyze_location(address: str) -> dict:
     - period analysis (score, position, risk level)
     - top crimes with names (not just IDs)
     - overall risk assessment
-    - recommendations
     """
     base_url = get_base_url()
     url = f"{base_url}/api/v1/criminal/activity-analysis/analyze"
@@ -190,9 +188,6 @@ def analyze_location(address: str) -> dict:
     # Determine overall risk (based on highest risk period)
     overall_risk = classify_risk(highest_risk_score, highest_risk_period) if highest_risk_period else "low"
     
-    # Generate recommendations based on top crime types
-    recommendations = generate_recommendations(top_crimes, overall_risk)
-    
     return {
         "success": True,
         "location": {
@@ -207,55 +202,18 @@ def analyze_location(address: str) -> dict:
             "highestRiskPeriod": highest_risk_period,
             "periods": periods
         },
-        "topCrimes": top_crimes,
-        "recommendations": recommendations
+        "topCrimes": top_crimes
     }
-
-
-def generate_recommendations(top_crimes: list[dict], overall_risk: str) -> list[str]:
-    """Generate safety recommendations based on crime data."""
-    recommendations = []
-    
-    # Check for specific crime types
-    crime_names_lower = [c["name"].lower() for c in top_crimes]
-    crime_names_str = " ".join(crime_names_lower)
-    
-    if any(x in crime_names_str for x in ["celular", "celphone", "phone", "telefone"]):
-        recommendations.append("Keep mobile phones and valuables concealed, avoid using phone while walking")
-    
-    if any(x in crime_names_str for x in ["transporte", "transport", "ônibus", "bus", "metrô", "metro"]):
-        recommendations.append("Stay alert on public transportation, keep bags secure and in front of you")
-    
-    if any(x in crime_names_str for x in ["veículo", "vehicle", "carro", "car", "moto"]):
-        recommendations.append("Park in well-lit areas, never leave valuables visible in vehicles")
-    
-    if any(x in crime_names_str for x in ["pedestre", "pedestrian", "transeunte"]):
-        recommendations.append("Avoid walking alone in isolated areas, especially at night")
-    
-    if any(x in crime_names_str for x in ["roubo", "robbery", "furto", "theft"]):
-        recommendations.append("Avoid displaying expensive items like jewelry, watches, or electronics")
-    
-    # General recommendations based on risk level
-    if overall_risk == "high":
-        recommendations.append("Exercise extreme caution in this area, consider alternative locations")
-    elif overall_risk == "medium":
-        recommendations.append("Stay aware of your surroundings and travel in groups when possible")
-    
-    # Default recommendation if none generated
-    if not recommendations:
-        recommendations.append("Stay aware of your surroundings and report suspicious activity")
-    
-    return recommendations
 
 
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description="Analyze criminal activity for locations in São Paulo, Brazil",
+        description="Analyze criminal activity for locations in Sao Paulo, Brazil",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    python analyze.py "Praça da República São Paulo"
+    python analyze.py "Praca da Republica Sao Paulo"
     python analyze.py "Av. Paulista 1000"
     python analyze.py --pretty "Largo do Arouche"
 

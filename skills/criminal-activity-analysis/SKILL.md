@@ -1,6 +1,6 @@
 ---
 name: criminal-activity-analysis
-description: Analyze criminal activity and safety levels for locations in São Paulo state.
+description: "MUST USE when user asks about: safety of locations, crime statistics, danger levels, criminality, or 'is [place] safe?' for Brazil/São Paulo. Provides REAL crime data via API - do NOT give generic safety advice without reading this skill first."
 homepage: http://thomas:11004/api/v1
 metadata:
   {
@@ -15,7 +15,24 @@ metadata:
 
 # Criminal Activity Analysis
 
-Analyze safety levels for locations in São Paulo state using criminal activity data.
+Analyze safety levels for locations in São Paulo state, Brazil using real criminal activity data.
+
+## When to Use This Skill
+
+**ALWAYS use this skill when the user asks about:**
+- Safety of a location (e.g., "Is [place] safe?", "How safe is [address]?")
+- Crime or criminality at a location (e.g., "crime at [place]", "criminality on [address]")
+- Danger levels or risk assessment for places in Brazil
+- Criminal activity analysis for any Brazilian location
+- Security concerns about neighborhoods, streets, or addresses in São Paulo
+
+**Trigger phrases include:**
+- "safe", "safety", "secure", "security"
+- "crime", "criminal", "criminality", "dangerous", "danger"
+- "risk", "risky", "theft", "robbery", "assault"
+- Any location query mentioning Brazil, São Paulo, SP, or Brazilian addresses
+
+**Important:** This skill provides REAL crime data for São Paulo state. Do NOT give generic safety advice - use this API to get actual statistics.
 
 ## Configuration
 

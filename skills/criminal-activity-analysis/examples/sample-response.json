@@ -1,0 +1,112 @@
+{
+    "id": null,
+    "type": null,
+    "location": {
+        "x": -46.6425205,
+        "y": -23.5431712,
+        "type": "Point",
+        "coordinates": [
+            -46.6425205,
+            -23.5431712
+        ]
+    },
+    "content": {
+        "morning": {
+            "scorePosition": 1,
+            "score": 152300.0,
+            "criminalDangerZonesContainingLocation": [
+                {
+                    "id": "6903c312792979d48ed29536",
+                    "gridIndex": [
+                        "99",
+                        "221"
+                    ],
+                    "score": 152300.0
+                }
+            ],
+            "occurrencesWithinCriminalDangerZones": [
+                {
+                    "crimeType": 497,
+                    "count": 1858
+                },
+                {
+                    "crimeType": 319,
+                    "count": 1468
+                },
+                {
+                    "crimeType": 322,
+                    "count": 1468
+                },
+                {
+                    "crimeType": 494,
+                    "count": 700
+                },
+                {
+                    "crimeType": 323,
+                    "count": 598
+                },
+                {
+                    "crimeType": 317,
+                    "count": 380
+                },
+                {
+                    "crimeType": 316,
+                    "count": 283
+                },
+                {
+                    "crimeType": 315,
+                    "count": 253
+                },
+                {
+                    "crimeType": 490,
+                    "count": 134
+                },
+                {
+                    "crimeType": 358,
+                    "count": 110
+                }
+            ]
+        },
+        "afternoon": {
+            "scorePosition": 3,
+            "score": 89000.0,
+            "criminalDangerZonesContainingLocation": [],
+            "occurrencesWithinCriminalDangerZones": [
+                {
+                    "crimeType": 497,
+                    "count": 1200
+                },
+                {
+                    "crimeType": 494,
+                    "count": 450
+                }
+            ]
+        },
+        "dawn": {
+            "scorePosition": 5,
+            "score": 45000.0,
+            "criminalDangerZonesContainingLocation": [],
+            "occurrencesWithinCriminalDangerZones": [
+                {
+                    "crimeType": 497,
+                    "count": 300
+                }
+            ]
+        },
+        "night": {
+            "scorePosition": 2,
+            "score": 245000.0,
+            "criminalDangerZonesContainingLocation": [],
+            "occurrencesWithinCriminalDangerZones": [
+                {
+                    "crimeType": 497,
+                    "count": 2100
+                },
+                {
+                    "crimeType": 319,
+                    "count": 1800
+                }
+            ]
+        }
+    }
+}

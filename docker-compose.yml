@@ -2,6 +2,7 @@ services:
   openclaw-gateway:
     image: ${OPENCLAW_IMAGE:-openclaw:local}
     container_name: openclaw-gateway
+    user: "1000:1000"
     environment:
       HOME: /home/node
       TERM: xterm-256color
